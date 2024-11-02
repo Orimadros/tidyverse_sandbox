@@ -37,5 +37,13 @@ performance <- mtcars %>%
   )) %>%
   rownames_to_column('car')
 
-left <- specs %>%
-  left_join(performance, by = car)
+# merging the tables
+full <- specs %>%
+  full_join(performance, by = 'car') %>%
+  select(efficiency, power)
+
+# calculating conditional distribution
+conditional_distribution <- full %>%
+  group_by(efficiency, power) %>%
+  summarize(n = n()) %>%
+  pivot_wider(names_from = efficiency, values_from = n)
