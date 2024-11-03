@@ -86,4 +86,5 @@ penguins %>%
   geom_smooth() +
   labs(title = 'Body mass and flipper length',
        x = 'Flipper Length (mm)',
-       y = 'Body Mass (g)')
+       y = 'Body Mass (g)',
+       color = 'Bill Depth (mm)')
